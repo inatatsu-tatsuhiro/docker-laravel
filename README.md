@@ -1,5 +1,11 @@
 # docker-laravel
 
+やること
+
+```
+$ docker-compose run --rm php composer create-project --prefer-dist laravel/laravel .
+```
+
 変更箇所
 
 ```.env
