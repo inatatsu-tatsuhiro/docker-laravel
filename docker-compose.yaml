@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  php:
+    container_name: php
+    build: ./docker/php
+    volumes:
+      - ./server:/var/www/html
+    command: php artisan serve --host 0.0.0.0
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+  
